@@ -6,7 +6,7 @@ Welcome to **myportf**, a personal portfolio website designed to showcase my wor
 
 ## 🚀 Live Demo
 
-🔗 [Click here to view the site](https://abhishek-ds-ml-gupta.github.io/myportf)
+🔗 [Click here to view the site](https://abhishek-ds-ml-gupta.github.io/myportfo.html)
 
 ---
 
