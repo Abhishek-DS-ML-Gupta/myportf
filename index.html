@@ -111,6 +111,18 @@
             animation-delay: 4s;
         }
 
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 0;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: padding 0.3s ease, background 0.3s ease;
+        }
+
         @keyframes float {
 
             0%,
@@ -1181,41 +1193,37 @@
         </svg>
     </div>
 
-    <!-- Navigation -->
-    <nav id="navbar"
-        style="position:fixed; top:0; width:100%; z-index:10000; background:transparent; border-bottom:1px solid rgba(255,255,255,0.1);">
-        <div class="container" style="max-width:1200px; margin:auto; padding:1rem 2rem;">
-            <div class="nav-content" style="display:flex; justify-content:space-between; align-items:center;">
+    <!-- Navbar -->
+    <nav
+        style="position:fixed; top:0; width:100%; background:transparent; border-bottom:1px solid rgba(255,255,255,0.2); z-index:1000;">
+        <div
+            style="max-width:1200px; margin:auto; padding:1rem 2rem; display:flex; justify-content:space-between; align-items:center;">
 
-                <div class="logo" style="font-size:1.7rem; font-weight:bold; letter-spacing:1px; color:#00ffff;">AG
-                </div>
+            <div style="font-size:1.7rem; font-weight:bold; color:#00ffff;">AG</div>
 
-                <ul class="nav-links" id="navLinks"
-                    style="display:flex; list-style:none; gap:1.5rem; margin:0; padding:0;">
-                    <li><a href="#home" style="text-decoration:none; color:white; font-size:1rem;"
-                            onmouseover="this.style.color='#00ffff'" onmouseout="this.style.color='white'">Home</a></li>
-                    <li><a href="#about" style="text-decoration:none; color:white; font-size:1rem;"
-                            onmouseover="this.style.color='#00ffff'" onmouseout="this.style.color='white'">About</a>
-                    </li>
-                    <li><a href="#journey" style="text-decoration:none; color:white; font-size:1rem;"
-                            onmouseover="this.style.color='#00ffff'" onmouseout="this.style.color='white'">Journey</a>
-                    </li>
-                    <li><a href="#skills" style="text-decoration:none; color:white; font-size:1rem;"
-                            onmouseover="this.style.color='#00ffff'" onmouseout="this.style.color='white'">Skills</a>
-                    </li>
-                    <li><a href="#projects" style="text-decoration:none; color:white; font-size:1rem;"
-                            onmouseover="this.style.color='#00ffff'" onmouseout="this.style.color='white'">Projects</a>
-                    </li>
-                    <li><a href="#contact" style="text-decoration:none; color:white; font-size:1rem;"
-                            onmouseover="this.style.color='#00ffff'" onmouseout="this.style.color='white'">Contact</a>
-                    </li>
-                </ul>
+            <!-- Menu icon -->
+            <div id="menu-icon" onclick="toggleMenu()"
+                style="font-size:2rem; cursor:pointer; color:#00ffff; display:none;">&#9776;</div>
 
-                <div class="menu-icon" onclick="toggleMenu()"
-                    style="display:none; font-size:2rem; cursor:pointer; color:#00ffff;">&#9776;</div>
-            </div>
+            <!-- Nav links -->
+            <ul id="navLinks"
+                style="list-style:none; display:flex; gap:1.5rem; margin:0; padding:0; transition:all 0.3s ease;">
+                <li><a href="#home" style="text-decoration:none; color:white;" onmouseover="this.style.color='#00ffff'"
+                        onmouseout="this.style.color='white'">Home</a></li>
+                <li><a href="#about" style="text-decoration:none; color:white;" onmouseover="this.style.color='#00ffff'"
+                        onmouseout="this.style.color='white'">About</a></li>
+                <li><a href="#journey" style="text-decoration:none; color:white;"
+                        onmouseover="this.style.color='#00ffff'" onmouseout="this.style.color='white'">Journey</a></li>
+                <li><a href="#skills" style="text-decoration:none; color:white;"
+                        onmouseover="this.style.color='#00ffff'" onmouseout="this.style.color='white'">Skills</a></li>
+                <li><a href="#projects" style="text-decoration:none; color:white;"
+                        onmouseover="this.style.color='#00ffff'" onmouseout="this.style.color='white'">Projects</a></li>
+                <li><a href="#contact" style="text-decoration:none; color:white;"
+                        onmouseover="this.style.color='#00ffff'" onmouseout="this.style.color='white'">Contact</a></li>
+            </ul>
         </div>
     </nav>
+
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -1564,33 +1572,54 @@
         }
 
         function toggleMenu() {
-            var nav = document.getElementById("navLinks");
-            if (nav.style.display === "flex") {
-                nav.style.display = "none";
+            const nav = document.getElementById("navLinks");
+            if (nav.style.display === "flex" && nav.style.flexDirection === "column") {
+                nav.style.opacity = "0";
+                nav.style.transform = "translateY(-10px)";
+                setTimeout(() => {
+                    nav.style.display = "none";
+                }, 300);
             } else {
                 nav.style.display = "flex";
                 nav.style.flexDirection = "column";
-                nav.style.background = "rgba(0, 0, 0, 0.7)";
+                nav.style.background = "rgba(0,0,0,0.9)";
                 nav.style.padding = "1rem 0";
                 nav.style.position = "absolute";
-                nav.style.top = "100%";
+                nav.style.top = "60px";
                 nav.style.left = "0";
                 nav.style.width = "100%";
+                nav.style.gap = "1rem";
+                nav.style.textAlign = "center";
+                nav.style.transition = "all 0.3s ease";
+                nav.style.opacity = "0";
+                nav.style.transform = "translateY(-10px)";
+                setTimeout(() => {
+                    nav.style.opacity = "1";
+                    nav.style.transform = "translateY(0)";
+                }, 10);
             }
         }
 
-        window.addEventListener('resize', function () {
-            var nav = document.getElementById("navLinks");
-            if (window.innerWidth > 768) {
+        function handleResize() {
+            const nav = document.getElementById("navLinks");
+            const icon = document.getElementById("menu-icon");
+            if (window.innerWidth < 768) {
+                nav.style.display = "none";
+                icon.style.display = "block";
+            } else {
                 nav.style.display = "flex";
                 nav.style.flexDirection = "row";
                 nav.style.position = "static";
                 nav.style.background = "transparent";
-            } else {
-                nav.style.display = "none";
+                nav.style.padding = "0";
+                nav.style.gap = "1.5rem";
+                nav.style.opacity = "1";
+                icon.style.display = "none";
             }
-        });
+        }
 
+        window.onload = handleResize;
+        window.onresize = handleResize;
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
