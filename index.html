@@ -141,7 +141,8 @@
 
         nav.scrolled {
             padding: 0.5rem 0;
-            background: rgba(15, 23, 42, 0.95);
+            filter: blur(100px);
+            background: rgba(22, 22, 22, 0.95);
         }
 
         .nav-content {
@@ -1193,37 +1194,41 @@
         </svg>
     </div>
 
-    <!-- Navbar -->
-    <nav
-        style="position:fixed; top:0; width:100%; background:transparent; border-bottom:1px solid rgba(255,255,255,0.2); z-index:1000;">
-        <div
-            style="max-width:1200px; margin:auto; padding:1rem 2rem; display:flex; justify-content:space-between; align-items:center;">
+    <!-- Navigation -->
+    <nav id="navbar"
+        style="position:fixed; top:0; width:100%; z-index:10000; background:transparent; border-bottom:1px solid rgba(255,255,255,0.1);">
+        <div class="container" style="max-width:1200px; margin:auto; padding:1rem 2rem;">
+            <div class="nav-content" style="display:flex; justify-content:space-between; align-items:center;">
 
-            <div style="font-size:1.7rem; font-weight:bold; color:#00ffff;">AG</div>
+                <div class="logo" style="font-size:1.7rem; font-weight:bold; letter-spacing:1px; color:#00ffff;">AG
+                </div>
 
-            <!-- Menu icon -->
-            <div id="menu-icon" onclick="toggleMenu()"
-                style="font-size:2rem; cursor:pointer; color:#00ffff; display:none;">&#9776;</div>
+                <ul class="nav-links" id="navLinks"
+                    style="display:flex; list-style:none; gap:1.5rem; margin:0; padding:0;">
+                    <li><a href="#home" style="text-decoration:none; color:white; font-size:1rem;"
+                            onmouseover="this.style.color='#00ffff'" onmouseout="this.style.color='white'">Home</a></li>
+                    <li><a href="#about" style="text-decoration:none; color:white; font-size:1rem;"
+                            onmouseover="this.style.color='#00ffff'" onmouseout="this.style.color='white'">About</a>
+                    </li>
+                    <li><a href="#journey" style="text-decoration:none; color:white; font-size:1rem;"
+                            onmouseover="this.style.color='#00ffff'" onmouseout="this.style.color='white'">Journey</a>
+                    </li>
+                    <li><a href="#skills" style="text-decoration:none; color:white; font-size:1rem;"
+                            onmouseover="this.style.color='#00ffff'" onmouseout="this.style.color='white'">Skills</a>
+                    </li>
+                    <li><a href="#projects" style="text-decoration:none; color:white; font-size:1rem;"
+                            onmouseover="this.style.color='#00ffff'" onmouseout="this.style.color='white'">Projects</a>
+                    </li>
+                    <li><a href="#contact" style="text-decoration:none; color:white; font-size:1rem;"
+                            onmouseover="this.style.color='#00ffff'" onmouseout="this.style.color='white'">Contact</a>
+                    </li>
+                </ul>
 
-            <!-- Nav links -->
-            <ul id="navLinks"
-                style="list-style:none; display:flex; gap:1.5rem; margin:0; padding:0; transition:all 0.3s ease;">
-                <li><a href="#home" style="text-decoration:none; color:white;" onmouseover="this.style.color='#00ffff'"
-                        onmouseout="this.style.color='white'">Home</a></li>
-                <li><a href="#about" style="text-decoration:none; color:white;" onmouseover="this.style.color='#00ffff'"
-                        onmouseout="this.style.color='white'">About</a></li>
-                <li><a href="#journey" style="text-decoration:none; color:white;"
-                        onmouseover="this.style.color='#00ffff'" onmouseout="this.style.color='white'">Journey</a></li>
-                <li><a href="#skills" style="text-decoration:none; color:white;"
-                        onmouseover="this.style.color='#00ffff'" onmouseout="this.style.color='white'">Skills</a></li>
-                <li><a href="#projects" style="text-decoration:none; color:white;"
-                        onmouseover="this.style.color='#00ffff'" onmouseout="this.style.color='white'">Projects</a></li>
-                <li><a href="#contact" style="text-decoration:none; color:white;"
-                        onmouseover="this.style.color='#00ffff'" onmouseout="this.style.color='white'">Contact</a></li>
-            </ul>
+                <div class="menu-icon" onclick="toggleMenu()"
+                    style="display:none; font-size:2rem; cursor:pointer; color:#00ffff;">&#9776;</div>
+            </div>
         </div>
     </nav>
-
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -1513,7 +1518,7 @@
     <section id="contact">
         <div class="container">
             <h2 class="section-title fade-in">Let's Work Together</h2>
-            <form class="contact-form fade-in" method="POST" action="https://formspree.io/f/xpwdvrkz">
+            <form class="contact-form fade-in" method="POST" action="https://formsubmit.co/ajax/amansg710@gmail.com">
                 <div class="form-group">
                     <input type="text" name="name" placeholder="Your Name" required>
                 </div>
@@ -1525,6 +1530,14 @@
                 </div>
                 <div class="form-group">
                     <button type="submit" class="cta-button" style="margin-bottom:10px;">Send Message</button>
+                    <!-- 3D Popup Card -->
+                    <div id="popup"
+                        style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%) rotateY(180deg); background:#111; color:white; padding:30px; border-radius:15px; box-shadow:0 20px 30px rgba(0,255,255,0.4); transition:all 0.6s ease; transform-style:preserve-3d; perspective:800px; z-index:999;">
+                        <h3 style="margin-top:0;">🎉 Thank You!</h3>
+                        <p>Your message has been sent successfully.</p>
+                        <button onclick="hidePopup()"
+                            style="margin-top:15px; background:#2a3a5b; color:black; border:none; padding:10px 15px; border-radius:8px; cursor:pointer;">Close</button>
+                    </div>
                     <div class="social-icons">
                         <a href="https://www.linkedin.com/in/abhishek-gupta-0442132b6?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
                             class="social-icon linkedin" title="LinkedIn" target="_blank">
@@ -1574,47 +1587,35 @@
         function toggleMenu() {
             const nav = document.getElementById("navLinks");
             if (nav.style.display === "flex" && nav.style.flexDirection === "column") {
-                nav.style.opacity = "0";
-                nav.style.transform = "translateY(-10px)";
-                setTimeout(() => {
-                    nav.style.display = "none";
-                }, 300);
+                nav.style.display = "none";
             } else {
                 nav.style.display = "flex";
                 nav.style.flexDirection = "column";
-                nav.style.background = "rgba(0,0,0,0.9)";
-                nav.style.padding = "1rem 0";
+                nav.style.background = "rgba(0, 0, 0, 0.9)";
                 nav.style.position = "absolute";
                 nav.style.top = "60px";
                 nav.style.left = "0";
                 nav.style.width = "100%";
-                nav.style.gap = "1rem";
+                nav.style.padding = "1rem 0";
                 nav.style.textAlign = "center";
-                nav.style.transition = "all 0.3s ease";
-                nav.style.opacity = "0";
-                nav.style.transform = "translateY(-10px)";
-                setTimeout(() => {
-                    nav.style.opacity = "1";
-                    nav.style.transform = "translateY(0)";
-                }, 10);
+                nav.style.gap = "1rem";
             }
         }
 
         function handleResize() {
+            const width = window.innerWidth;
             const nav = document.getElementById("navLinks");
-            const icon = document.getElementById("menu-icon");
-            if (window.innerWidth < 768) {
+            const menu = document.getElementById("menu-icon");
+            if (width < 768) {
                 nav.style.display = "none";
-                icon.style.display = "block";
+                menu.style.display = "block";
             } else {
                 nav.style.display = "flex";
                 nav.style.flexDirection = "row";
                 nav.style.position = "static";
                 nav.style.background = "transparent";
                 nav.style.padding = "0";
-                nav.style.gap = "1.5rem";
-                nav.style.opacity = "1";
-                icon.style.display = "none";
+                menu.style.display = "none";
             }
         }
 
@@ -1973,6 +1974,42 @@
                 particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
                 particleContainer.appendChild(particle);
             }
+        }
+
+        const form = document.querySelector(".contact-form");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const data = new FormData(form);
+
+            fetch("https://formspree.io/f/xpwdvrkz", {
+                method: "POST",
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            })
+                .then(response => {
+                    if (response.ok) {
+                        showPopup();
+                        form.reset();
+                    } else {
+                        alert("Message failed to send. Try again.");
+                    }
+                })
+                .catch(error => alert("Error: " + error));
+        });
+
+        function showPopup() {
+            const popup = document.getElementById("popup");
+            popup.style.display = "block";
+            setTimeout(() => {
+                popup.style.transform = "translate(-50%, -50%) rotateY(0deg)";
+            }, 10);
+        }
+
+        function hidePopup() {
+            const popup = document.getElementById("popup");
+            popup.style.transform = "translate(-50%, -50%) rotateY(180deg)";
+            setTimeout(() => popup.style.display = "none", 600);
         }
 
         // Enhanced parallax with mouse movement
