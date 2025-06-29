@@ -1199,7 +1199,6 @@
         style="position:fixed; top:0; width:100%; z-index:10000; background:transparent; border-bottom:1px solid rgba(255,255,255,0.1);">
         <div class="container" style="max-width:1200px; margin:auto; padding:1rem 2rem;">
             <div class="nav-content" style="display:flex; justify-content:space-between; align-items:center;">
-
                 <div class="logo" style="font-size:1.7rem; font-weight:bold; letter-spacing:1px; color:#00ffff;">AG
                 </div>
 
@@ -1224,8 +1223,9 @@
                     </li>
                 </ul>
 
-                <div class="menu-icon" onclick="toggleMenu()"
-                    style="display:none; font-size:2rem; cursor:pointer; color:#00ffff;">&#9776;</div>
+                <div class="menu-icon" id="menu-icon" onclick="toggleMenu()"
+                    style="display:none; font-size:2rem; cursor:pointer; color:#00ffff;">☰</div>
+
             </div>
         </div>
     </nav>
@@ -1621,6 +1621,7 @@
 
         window.onload = handleResize;
         window.onresize = handleResize;
+
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
